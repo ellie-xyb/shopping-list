@@ -1,65 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Shopping list example</title>
-    <style>
-      li {
-        margin-bottom: 10px;
-      }
 
-      li button {
-        font-size: 15px;
-        margin-left: 30px;
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Shopping list example</title>
+  <style>
+    li {
+      width: 50vw;
+      margin-bottom: 10px;
 
-    <h1>My shopping list</h1>
+    }
 
-    <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
-    </div>
+    li div {
+      display: inline-block;
+      width: 20vw;
+      box-sizing: border-box;
 
-    <ul>
+    }
 
-    </ul>
+    li button {
+      font-size: 15px;
+      color: #666;
+    }
+  </style>
+</head>
 
-    <script>
-        var Ul=document.querySelector("ul");
-        var item=document.querySelector("input");
-        var Botton=document.querySelector("button");
-        
-       
+<body>
 
-        Botton.onclick=function(){
-            var Item=item.value
-            item.value="";
-            
-        
-        var Li=document.createElement("li");
-        var Span=document.createElement("span");
-        var liBotton=document.createElement("button");
+  <h1>My shopping list</h1>
 
-        Li.appendChild(Span);
-        Li.appendChild(liBotton);
+  <div>
+    <label for="item">Enter a new item:</label>
+    <input type="text" name="item" id="item">
+    <button>Add item</button>
+  </div>
 
-        Span.textContent=Item;
-        liBotton.textContent="Delete";
-        Ul.appendChild(Li);
+  <ul>
 
-        liBotton.onclick=function(){
-            Ul.removeChild(Li);
-        }
+  </ul>
 
+  <script>
+    const Ul = document.querySelector("ul");
+    const item = document.querySelector("input");
+    const Botton = document.querySelector("button");
+    item.focus();
+
+
+
+    Botton.onclick = function () {
+
+      let Item = item.value
+      item.value = "";
+      if (Item === ""|| isNaN(Item) === false) {
+        alert("t~~ry a~gain~~")
         item.focus();
-        }
-        
+        return;
+      }
+      
+      const Li = document.createElement("li");
+      const Span = document.createElement("span");
+      const liBotton = document.createElement("button");
+      const spanDiv = document.createElement("div");
+      const liButtonDiv = document.createElement("div");
 
-    </script>
-  </body>
+      spanDiv.appendChild(Span);
+      liButtonDiv.appendChild(liBotton);
+      Li.appendChild(spanDiv);
+      Li.appendChild(liButtonDiv);
+
+      Span.textContent = Item;
+      liBotton.textContent = "Delete";
+      Ul.appendChild(Li);
+
+      liBotton.onclick = function () {
+        Ul.removeChild(Li);
+      }
+
+      item.focus();
+
+
+    }
+
+
+  </script>
+</body>
+
 </html>
